@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class NotiziaDto {
 
+    private long idNotizia;
     private String titolo;
     private String articolo;
     private String immagine;
