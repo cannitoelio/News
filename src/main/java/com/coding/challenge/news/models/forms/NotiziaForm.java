@@ -2,9 +2,9 @@ package com.coding.challenge.news.models.forms;
 
 import lombok.Data;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
 
 @Data
 public class NotiziaForm {
