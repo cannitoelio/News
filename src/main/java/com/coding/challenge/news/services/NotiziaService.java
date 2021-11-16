@@ -1,6 +1,6 @@
 package com.coding.challenge.news.services;
 
-import com.coding.challenge.news.models.dtos.NotiziaDto;
+import com.coding.challenge.news.models.dtos.NotiziaDTO;
 import com.coding.challenge.news.models.entities.Notizia;
 import com.coding.challenge.news.models.forms.NotiziaForm;
 import com.coding.challenge.news.repositories.NotiziaRepository;
@@ -17,20 +17,23 @@ public class NotiziaService {
     @Autowired
     NotiziaRepository notiziaRepository;
 
-    public List<NotiziaDto> getAllNotizie(){
-        return ObjectMapperUtils.mapAll(notiziaRepository.findAll(),NotiziaDto.class);
+    public List<NotiziaDTO> getAllNotizie(){
+        return ObjectMapperUtils.mapAll(notiziaRepository.findAll(), NotiziaDTO.class);
     }
 
-    public NotiziaDto getNotizia(long id) {
-        return ObjectMapperUtils.map(notiziaRepository.findById(id).orElse(new Notizia()),NotiziaDto.class);
+    public NotiziaDTO getNotizia(long id) {
+        return ObjectMapperUtils.map(notiziaRepository.findById(id).orElse(new Notizia()), NotiziaDTO.class);
     }
 
     public void deleteNotizia(long id) {
         notiziaRepository.deleteById(id);
     }
 
-    public NotiziaDto addNotizia(NotiziaForm notiziaForm) {
-        Notizia entity = notiziaRepository.save(ObjectMapperUtils.map(notiziaForm, Notizia.class));
-        return ObjectMapperUtils.map(entity,NotiziaDto.class);
+    public NotiziaDTO addNotizia(NotiziaForm notiziaForm) {
+        return ObjectMapperUtils.map(
+                notiziaRepository.save(ObjectMapperUtils.map(notiziaForm, Notizia.class)),
+                NotiziaDTO.class);
     }
+
+
 }

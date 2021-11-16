@@ -3,7 +3,7 @@ package com.coding.challenge.news.models.dtos;
 import lombok.Data;
 
 @Data
-public class NotiziaDto {
+public class NotiziaDTO {
 
     private long idNotizia;
     private String titolo;
