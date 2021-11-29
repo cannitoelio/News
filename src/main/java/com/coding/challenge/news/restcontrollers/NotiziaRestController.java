@@ -1,5 +1,6 @@
 package com.coding.challenge.news.restcontrollers;
 
+import com.coding.challenge.news.exception.NotiziaNotFoundException;
 import com.coding.challenge.news.models.dtos.NotiziaDTO;
 import com.coding.challenge.news.models.forms.NotiziaForm;
 import com.coding.challenge.news.services.NotiziaService;
@@ -38,15 +39,17 @@ public class NotiziaRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<NotiziaDTO> getNotizia(@PathVariable long id) {
+        NotiziaDTO notizia = notiziaService.getNotizia(id);
+        throwIfNotFound(notizia);
         return
                 ResponseEntity.status(HttpStatus.OK)
-                        .body(notiziaService.getNotizia(id));
+                        .body(notizia);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = Paths.URL_CREATE_NEW)
     @Operation(summary = "Crate a new news")
-    @ApiResponse(responseCode = "201", description = "Order is created",
+    @ApiResponse(responseCode = "201", description = "News is created",
             content = {@Content(mediaType = APPLICATION_JSON_VALUE,
             schema = @Schema(implementation = NotiziaDTO.class))})
     public ResponseEntity<NotiziaDTO> createNotizia(@Valid @RequestBody NotiziaForm form) {
@@ -65,6 +68,11 @@ public class NotiziaRestController {
     @ResponseStatus(HttpStatus.OK)
     public void deleteNotizia(@PathVariable long id) {
         notiziaService.deleteNotizia(id);
+    }
+
+    private void throwIfNotFound(NotiziaDTO notizia) {
+        if (notizia.equals(new NotiziaDTO()))
+            throw new NotiziaNotFoundException("Notizia non trovata!");
     }
 }
 

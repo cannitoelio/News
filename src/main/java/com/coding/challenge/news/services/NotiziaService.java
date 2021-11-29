@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Log4j2
@@ -30,6 +33,7 @@ public class NotiziaService {
     }
 
     public NotiziaDTO addNotizia(NotiziaForm notiziaForm) {
+
         return ObjectMapperUtils.map(
                 notiziaRepository.save(ObjectMapperUtils.map(notiziaForm, Notizia.class)),
                 NotiziaDTO.class);
