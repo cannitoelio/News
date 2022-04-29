@@ -1,10 +1,8 @@
 package com.coding.challenge.news.models.dtos;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class AutoreDTO {
 
     private long id;

@@ -2,13 +2,11 @@ package com.coding.challenge.news.models.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name = "notizie")
 public class Notizia {
     @Id
     private Long idNotizia;

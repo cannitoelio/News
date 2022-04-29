@@ -4,14 +4,14 @@ import com.coding.challenge.news.exception.NotiziaNotFoundException;
 import com.coding.challenge.news.models.dtos.NotiziaDTO;
 import com.coding.challenge.news.models.forms.NotiziaForm;
 import com.coding.challenge.news.services.NotiziaService;
-import com.coding.challenge.news.util.Paths;
+import com.coding.challenge.news.costants.Paths;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.jaxb.SpringDataJaxb;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -72,7 +72,7 @@ public class NotiziaRestController {
 
     private void throwIfNotFound(NotiziaDTO notizia) {
         if (notizia.equals(new NotiziaDTO()))
-            throw new NotiziaNotFoundException("Notizia non trovata!");
+            throw new NotiziaNotFoundException();
     }
 }
 

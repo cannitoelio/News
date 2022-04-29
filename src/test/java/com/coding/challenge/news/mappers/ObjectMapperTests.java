@@ -19,10 +19,9 @@ class ObjectMapperTests {
 
     @Test
     void testMappingTwoObjectsHasSameValue() throws Exception {
-        AutoreDTO autoreDTO = AutoreDTO.builder()
-                .cognome("Cannito")
-                .nome("Elio")
-                .build();
+        AutoreDTO autoreDTO = new AutoreDTO();
+        autoreDTO.setNome("Elio");
+        autoreDTO.setCognome("Cannito");
         Autore autore = ObjectMapperUtils.map(autoreDTO, Autore.class);
         assertThat(autore.getCognome()).isEqualTo(autoreDTO.getCognome());
         assertThat(autore.getNome()).isEqualTo(autoreDTO.getNome());
@@ -32,14 +31,12 @@ class ObjectMapperTests {
 
     @Test
     void testMapAllObjectMapperOfObject() {
-        AutoreDTO autoreDTO = AutoreDTO.builder()
-                .cognome("Cannito")
-                .nome("Elio")
-                .build();
-        AutoreDTO autore2DTO = AutoreDTO.builder()
-                .cognome("Cannito2")
-                .nome("Elio2")
-                .build();
+        AutoreDTO autoreDTO = new AutoreDTO();
+        autoreDTO.setNome("Elio");
+        autoreDTO.setCognome("Cannito");
+        AutoreDTO autore2DTO = new AutoreDTO();
+        autore2DTO.setNome("Elio");
+        autore2DTO.setCognome("Cannito");
         List<AutoreDTO> listAutoreDTO = Arrays.asList(autoreDTO,autore2DTO);
         List<Autore> autori = ObjectMapperUtils.mapAll(listAutoreDTO,Autore.class);
         Autore autore1 = new Autore();
@@ -48,7 +45,6 @@ class ObjectMapperTests {
         Autore autore2 = new Autore();
         autore2.setNome("Elio2");
         autore2.setCognome("Cannito2");
-
         assertThat(autori).isEqualTo(Arrays.asList(autore1,autore2));
 
     }

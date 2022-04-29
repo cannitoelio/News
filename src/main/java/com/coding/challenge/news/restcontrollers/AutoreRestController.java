@@ -3,7 +3,7 @@ package com.coding.challenge.news.restcontrollers;
 import com.coding.challenge.news.models.dtos.AutoreDTO;
 import com.coding.challenge.news.models.forms.AutoreForm;
 import com.coding.challenge.news.services.AutoreService;
-import com.coding.challenge.news.util.Paths;
+import com.coding.challenge.news.costants.Paths;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

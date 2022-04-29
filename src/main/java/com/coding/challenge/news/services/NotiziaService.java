@@ -21,6 +21,7 @@ public class NotiziaService {
     NotiziaRepository notiziaRepository;
 
     public List<NotiziaDTO> getAllNotizie(){
+        log.info("");
         return ObjectMapperUtils.mapAll(notiziaRepository.findAll(), NotiziaDTO.class);
     }
 

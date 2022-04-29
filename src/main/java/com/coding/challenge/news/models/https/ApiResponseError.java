@@ -1,4 +1,4 @@
-package com.coding.challenge.news.models.http;
+package com.coding.challenge.news.models.https;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
